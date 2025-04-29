@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:27:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 11:57:04 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 14:31:22 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_lucher(t_philo *philo)
 {
-	int i = -1;
-	
+	int	i;
+
+	i = -1;
 	while (++i < philo->arg.philo_nbr)
 		pthread_create(&philo->threads[i], NULL, philo_routine, (void *)philo);
 	i = -1;

@@ -6,13 +6,13 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 11:59:37 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 14:31:37 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void *philo_routine(void *arg)
+void	*philo_routine(void *arg)
 {
 	t_philo		*philo;
 	static int	id_gen;

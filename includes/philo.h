@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 11:55:02 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 14:30:44 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ERR_ARG_COUNT 1
 # define ERR_PHILO_RANGE 2
 # define ERR_NEGATIVE_ARG 3
+# define ERR_CREAT_MUTEX 4
 
 # define MAX_PHILO 200
 
@@ -40,8 +41,9 @@ typedef struct s_args
 
 typedef struct s_philo
 {
-	t_args		arg;
-	pthread_t	threads[MAX_PHILO];
+	t_args			arg;
+	pthread_t		threads[MAX_PHILO];
+	pthread_mutex_t	forks[MAX_PHILO];
 }t_philo;
 
 // Prototypes : core
