@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 10:27:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 11:57:04 by wimam            ###   ########.fr       */
+/*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
+/*   Updated: 2025/04/29 11:59:37 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_lucher(t_philo *philo)
+void *philo_routine(void *arg)
 {
-	int i = -1;
-	
-	while (++i < philo->arg.philo_nbr)
-		pthread_create(&philo->threads[i], NULL, philo_routine, (void *)philo);
-	i = -1;
-	while (++i < philo->arg.philo_nbr)
-		pthread_join(philo->threads[i], NULL);
-}
+	t_philo		*philo;
+	static int	id_gen;
+	int			id;
 
-int	main(int ac, char **av)
-{
-	t_philo	philo;
-
-	if (t_philo_init(&philo, --ac, ++av) == FALSE)
-		return (1);
-	ft_lucher(&philo);
-	return (0);
+	philo = (t_philo *) arg;
+	id = id_gen++;
+	printf("Hello, this is thread %d\n", id + 1);
+	return (NULL);
 }

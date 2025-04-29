@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 11:49:02 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 11:55:02 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <pthread.h>
 
 # define BOOL unsigned short
 # define TRUE 1
@@ -39,12 +40,14 @@ typedef struct s_args
 
 typedef struct s_philo
 {
-	t_args	arg;
+	t_args		arg;
+	pthread_t	threads[MAX_PHILO];
 }t_philo;
 
 // Prototypes : core
 BOOL	t_philo_init(t_philo *philo, char ac, char **av);
 void	err_msg(int msg);
+void	*philo_routine(void *arg);
 
 //utils
 long	ft_atoi(const char *str);
