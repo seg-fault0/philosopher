@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 17:03:58 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 17:27:38 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,12 @@ BOOL	t_philo_init(t_philo *philo, char ac, char **av)
 	i = -1;
 	while (++i < philo->arg.philo_nbr)
 		philo->forks[i] = 1;
+	i = -1;
+	while (++i < philo->arg.philo_nbr)
+	{
+		philo->flag[i].eat = TRUE;
+		philo->flag[i].eat = TRUE;
+		philo->flag[i].eat = TRUE;	
+	}
 	return (TRUE);
 }

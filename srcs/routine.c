@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 17:17:11 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 17:31:25 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	ft_activity(t_philo *philo, int id, int activity)
 	flag_manager(philo, id, activity);
 	if(activity == EAT)
 	{
-		ft_mutex(philo, id, LOCK);
 		printf("%d %d %s", philo->age[id], (id + 1), FORK_STR);
-		ft_mutex(philo, (id + 1), LOCK);
 		printf("%d %d %s", philo->age[id], (id + 1), FORK_STR);
 		printf("%d %d %s", philo->age[id], (id + 1), EAT_STR);
 		ft_mutex(philo, id, UNLOCK);
