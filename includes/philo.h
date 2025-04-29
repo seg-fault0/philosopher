@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 15:57:07 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 16:29:54 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 
 // PHILO MACROS
 # define MAX_PHILO 200
+# define USLEEP_TIME 2000
 
 // Mutex Macros
 # define LOCK 0
