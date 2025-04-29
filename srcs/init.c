@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 15:03:00 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 16:19:32 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ BOOL	get_args(t_philo *philo, char **av)
 	philo->arg.eat = ft_atoi(av[2]);
 	philo->arg.sleep = ft_atoi(av[3]);
 	philo->arg.think = philo->arg.die - (philo->arg.eat + philo->arg.sleep);
+	if (philo->arg.think < 0)
+		philo->arg.think = 0;
 	if (philo->arg.philo_nbr <= 0 || philo->arg.philo_nbr > MAX_PHILO)
 		return (err_msg(ERR_PHILO_RANGE), FALSE);
 	if (philo->arg.die <= 0 || philo->arg.eat <= 0 || philo->arg.sleep <= 0)
