@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 17:00:50 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 17:17:11 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_activity(t_philo *philo, int id, int activity)
 {
+	flag_manager(philo, id, activity);
 	if(activity == EAT)
 	{
 		ft_mutex(philo, id, LOCK);
@@ -55,12 +56,12 @@ void	*philo_routine(void *arg)
 	id = id_gen++;
 	while (TRUE)
 	{
-		ft_activity(philo, id, EAT);
-		death_checker(philo, id);
-		ft_activity(philo, id, SLEEP);
-		death_checker(philo, id);
-		ft_activity(philo, id, THINK);
-		death_checker(philo, id);
+		if (can_philo_eat(philo, id))
+			ft_activity(philo, id, EAT);
+		else if (philo->flag[id].sleep == TRUE)
+			ft_activity(philo, id, SLEEP);
+		else if (philo->flag[id].think == TRUE)
+			ft_activity(philo, id, THINK);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 17:01:16 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 17:03:58 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ BOOL	create_forks(t_philo *philo)
 
 BOOL	t_philo_init(t_philo *philo, char ac, char **av)
 {
+	int	i;
 	if (ac < 4 || ac > 5)
 		return (err_msg(ERR_ARG_COUNT), FALSE);
 	if (get_args(philo, av) == FALSE)
@@ -54,5 +55,8 @@ BOOL	t_philo_init(t_philo *philo, char ac, char **av)
 	if (create_forks(philo) == FALSE)
 		return (FALSE);
 	ft_memset(philo->age, 0, philo->arg.philo_nbr * sizeof(int));
+	i = -1;
+	while (++i < philo->arg.philo_nbr)
+		philo->forks[i] = 1;
 	return (TRUE);
 }

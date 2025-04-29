@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 17:02:09 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 17:16:40 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,19 @@ typedef struct s_args
 	int	think;
 }t_args;
 
+typedef struct s_flag
+{
+	BOOL	eat;
+	BOOL	sleep;
+	BOOL	think;
+	BOOL	died;
+}t_flag;
+
 typedef struct s_philo
 {
 	t_args			arg;
 	pthread_t		threads[MAX_PHILO];
+	t_flag			flag[MAX_PHILO];
 	pthread_mutex_t	locks[MAX_PHILO];
 	int				forks[MAX_PHILO];
 	int				age[MAX_PHILO];
@@ -77,6 +86,8 @@ BOOL	t_philo_init(t_philo *philo, char ac, char **av);
 void	err_msg(int msg);
 void	*philo_routine(void *arg);
 void	ft_mutex(t_philo *philo, int id, int event);
+BOOL	can_philo_eat(t_philo *philo, int id);
+void	flag_manager(t_philo *philo, int id, int activity);
 
 //utils
 long	ft_atoi(const char *str);
