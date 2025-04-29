@@ -6,17 +6,17 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:27:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 10:42:09 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 11:44:05 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main (int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_philo	philo;
-	
-	if (t_philo_init(&philo, --ac, ++av))
+
+	if (t_philo_init(&philo, --ac, ++av) == FALSE)
 		return (1);
 	printf("Lunch ...\n");
 	return (0);

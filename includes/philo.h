@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 10:49:07 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 11:34:16 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,21 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <limits.h>
+
+# define BOOL unsigned short
+# define TRUE 1
+# define FALSE 0 
 
 # define ERR_ARG_COUNT 1
+# define ERR_PHILO_RANGE 2
+# define ERR_NEGATIVE_ARG 3
+
+# define MAX_PHILO 200
 
 typedef struct s_args
 {
+	int	philo_nbr;
 	int	die;
 	int	eat;
 	int	sleep;
@@ -31,9 +41,11 @@ typedef struct s_philo
 	t_args	arg;
 }t_philo;
 
-
 // Prototypes : core
-int		t_philo_init(t_philo *philo, char ac, char **av);
+BOOL	t_philo_init(t_philo *philo, char ac, char **av);
 void	err_msg(int msg);
+
+//utils
+long	ft_atoi(const char *str);
 
 #endif

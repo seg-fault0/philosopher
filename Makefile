@@ -1,6 +1,7 @@
 SRC =	srcs/exit.c	\
 		srcs/init.c	\
 		srcs/main.c	\
+		srcs/utils.c\
 
 OBG = $(SRC:.c=.o)
 
