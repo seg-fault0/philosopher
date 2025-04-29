@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 16:29:54 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 17:02:09 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ typedef struct s_philo
 {
 	t_args			arg;
 	pthread_t		threads[MAX_PHILO];
-	pthread_mutex_t	forks[MAX_PHILO];
+	pthread_mutex_t	locks[MAX_PHILO];
+	int				forks[MAX_PHILO];
 	int				age[MAX_PHILO];
 }t_philo;
 

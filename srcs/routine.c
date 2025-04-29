@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 16:29:43 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 17:00:50 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,6 @@ void	*philo_routine(void *arg)
 
 	philo = (t_philo *) arg;
 	id = id_gen++;
-	if (id % 2 == 0)
-	{
-		ft_activity(philo, id, SLEEP);
-		death_checker(philo, id);
-		ft_activity(philo, id, THINK);
-		death_checker(philo, id);
-	}
 	while (TRUE)
 	{
 		ft_activity(philo, id, EAT);

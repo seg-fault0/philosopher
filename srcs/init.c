@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 16:19:32 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 17:01:16 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ BOOL	create_forks(t_philo *philo)
 	i = -1;
 	while (++i < philo->arg.philo_nbr)
 	{
-		if (pthread_mutex_init(&philo->forks[i], NULL) != 0)
+		if (pthread_mutex_init(&philo->locks[i], NULL) != 0)
 		{
 			while (i >= 0)
-				pthread_mutex_destroy(&philo->forks[i--]);
+				pthread_mutex_destroy(&philo->locks[i--]);
 			return (err_msg(ERR_CREAT_MUTEX), FALSE);
 		}
 	}
