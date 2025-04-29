@@ -6,14 +6,18 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:27:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 10:33:50 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 10:42:09 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main ()
+int main (int ac, char **av)
 {
-	printf("Hello world\n");
+	t_philo	philo;
+	
+	if (t_philo_init(&philo, --ac, ++av))
+		return (1);
+	printf("Lunch ...\n");
 	return (0);
 }

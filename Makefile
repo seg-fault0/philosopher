@@ -1,4 +1,6 @@
-SRC = srcs/main.c
+SRC =	srcs/exit.c	\
+		srcs/init.c	\
+		srcs/main.c	\
 
 OBG = $(SRC:.c=.o)
 
@@ -11,7 +13,7 @@ I = -I ./includes/
 all : $(NAME)
 
 $(NAME) : $(OBG)
-	cc $(FLAGS) $< -o $@
+	cc $(FLAGS) $^ -o $@
 
 %.o : %.c ./includes/philo.h
 	cc -c $< $(I) -o $@
@@ -21,5 +23,7 @@ clean :
 
 fclean : clean
 	rm -f $(NAME)
+
+re : fclean all
 
 .PHONY : clean

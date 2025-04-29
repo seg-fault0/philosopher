@@ -1,39 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 10:49:07 by wimam            ###   ########.fr       */
+/*   Created: 2025/04/29 10:45:26 by wimam             #+#    #+#             */
+/*   Updated: 2025/04/29 10:50:12 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-# include <stdio.h>
-# include <unistd.h>
-
-# define ERR_ARG_COUNT 1
-
-typedef struct s_args
+void err_msg(int msg)
 {
-	int	die;
-	int	eat;
-	int	sleep;
-	int	think;
-}t_args;
-
-typedef struct s_philo
-{
-	t_args	arg;
-}t_philo;
-
-
-// Prototypes : core
-int		t_philo_init(t_philo *philo, char ac, char **av);
-void	err_msg(int msg);
-
-#endif
+	if (msg == ERR_ARG_COUNT)
+		write(2, "ERR : Too much/little args\n", 25);
+}
