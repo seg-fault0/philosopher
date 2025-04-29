@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 17:16:40 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 17:38:29 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@
 # define THINK_STR "is thinking\n"
 # define DEAD_STR "died\n"
 
+// Fork Macros
+# define TAKE 1
+# define PUT 2
+
 // STRUCT
 typedef struct s_args
 {
@@ -88,6 +92,7 @@ void	*philo_routine(void *arg);
 void	ft_mutex(t_philo *philo, int id, int event);
 BOOL	can_philo_eat(t_philo *philo, int id);
 void	flag_manager(t_philo *philo, int id, int activity);
+void	ft_fork(t_philo *philo, int id, int act);
 
 //utils
 long	ft_atoi(const char *str);
