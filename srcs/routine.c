@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 16:07:21 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 16:09:20 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ void	ft_activity(t_philo *philo, int id, int activity)
 		ft_mutex(philo, id + 1, UNLOCK);
 		philo->age[id] += philo->arg.eat;
 	}
-	else if (activity == SLEEP || activity == THINK)
+	if (activity == SLEEP)
 	{
-		printf("%d %d %s", philo->age[id], id, activity);
-		if (activity == SLEEP)
-			philo->age[id] += philo->arg.sleep;
-		else if (activity)
-			philo->age[id] += philo->arg.think;
+		printf("%d %d %s", philo->age[id], id, SLEEP_STR);
+		philo->age[id] += philo->arg.sleep;
+	}
+	else if (activity == THINK)
+	{
+		printf("%d %d %s", philo->age[id], id, THINK_STR);
+		philo->age[id] += philo->arg.think;
 	}
 }
 
