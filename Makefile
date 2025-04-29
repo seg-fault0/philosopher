@@ -1,8 +1,8 @@
-SRC =	srcs/exit.c		\
-		srcs/init.c		\
-		srcs/main.c		\
-		srcs/routine.c	\
-		srcs/utils.c	\
+SRC =	srcs/exit.c			\
+		srcs/init.c			\
+		srcs/libft.c		\
+		srcs/main.c			\
+		srcs/routine.c		\
 
 OBG = $(SRC:.c=.o)
 
