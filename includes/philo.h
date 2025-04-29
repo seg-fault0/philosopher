@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 15:11:40 by wimam            ###   ########.fr       */
+/*   Updated: 2025/04/29 15:57:07 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 // Event STR Macros
 # define FORK_STR "has taken a fork\n"
 # define EAT_STR "is eating\n"
+# define SLEEP_STR "is sleeping\n"
 # define THINK_STR "is thinking\n"
 # define DEAD_STR "died\n"
 
@@ -73,6 +74,7 @@ typedef struct s_philo
 BOOL	t_philo_init(t_philo *philo, char ac, char **av);
 void	err_msg(int msg);
 void	*philo_routine(void *arg);
+void	ft_mutex(t_philo *philo, int id, int event);
 
 //utils
 long	ft_atoi(const char *str);
