@@ -6,40 +6,31 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 14:43:16 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 14:48:01 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-BOOL	death_checker(t_philo *philo, int id)
+void	ft_eat(t_philo *philo, int id)
 {
-	long			age;
-	
-	age = get_time() - philo->day_of_birth[id];
-	if ((age > philo->age[id] + 5 && philo->eating_counter[id] < 2))
-	{
-		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
-		exit(0);
-	}
+	printf("%d %d %s", philo->age[id], (id + 1), FORK_STR);
+	printf("%d %d %s", philo->age[id], (id + 1), FORK_STR);
+	ft_fork(philo, id, TAKE);
+	printf("%d %d %s", philo->age[id], (id + 1), EAT_STR);
+	ft_mutex(philo, id, UNLOCK);
+	ft_mutex(philo, (id + 1), UNLOCK);
+	philo->age[id] += philo->arg.eat;
+	philo->eating_counter[id]++;
+	usleep(USLEEP_TIME * philo->arg.eat);
+	ft_fork(philo, id, PUT);
 }
 
 void	ft_activity(t_philo *philo, int id, int activity)
 {
 	flag_manager(philo, id, activity);
 	if (activity == EAT)
-	{
-		printf("%d %d %s", philo->age[id], (id + 1), FORK_STR);
-		printf("%d %d %s", philo->age[id], (id + 1), FORK_STR);
-		ft_fork(philo, id, TAKE);
-		printf("%d %d %s", philo->age[id], (id + 1), EAT_STR);
-		ft_mutex(philo, id, UNLOCK);
-		ft_mutex(philo, (id + 1), UNLOCK);
-		philo->age[id] += philo->arg.eat;
-		philo->eating_counter[id]++;
-		usleep(USLEEP_TIME * philo->arg.eat);
-		ft_fork(philo, id, PUT);
-	}
+		ft_eat(philo, id);
 	if (activity == SLEEP)
 	{
 		printf("%d %d %s", philo->age[id], (id + 1), SLEEP_STR);
@@ -51,6 +42,18 @@ void	ft_activity(t_philo *philo, int id, int activity)
 		printf("%d %d %s", philo->age[id], (id + 1), THINK_STR);
 		philo->age[id] += philo->arg.think;
 		usleep(USLEEP_TIME * philo->arg.think);
+	}
+}
+
+BOOL	death_checker(t_philo *philo, int id)
+{
+	long			age;
+
+	age = get_time() - philo->day_of_birth[id];
+	if ((age > philo->age[id] + 5 && philo->eating_counter[id] < 2))
+	{
+		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
+		exit(0);
 	}
 }
 
