@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 09:40:10 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 11:35:49 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 // PHILO MACROS
 # define MAX_PHILO 200
-# define USLEEP_TIME 2000
+# define USLEEP_TIME 1000
 
 // Mutex Macros
 # define LOCK 0
@@ -84,7 +84,7 @@ typedef struct s_philo
 	pthread_mutex_t	locks[MAX_PHILO];
 	int				forks[MAX_PHILO];
 	int				age[MAX_PHILO];
-	struct timeval	day_of_birth[MAX_PHILO];
+	long			day_of_birth[MAX_PHILO];
 }t_philo;
 
 // Prototypes : core
@@ -100,5 +100,6 @@ void	ft_fork(t_philo *philo, int id, int act);
 long	ft_atoi(const char *str);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_calloc(size_t count, size_t size);
+long	get_time(void);
 
 #endif

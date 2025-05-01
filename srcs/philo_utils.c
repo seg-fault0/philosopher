@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:53:36 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 09:44:26 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 11:29:43 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,12 @@ void	ft_fork(t_philo *philo, int id, int act)
 		ft_mutex(philo, id, UNLOCK);
 		ft_mutex(philo, id + 1, UNLOCK);
 	}
+}
+
+long	get_time(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }

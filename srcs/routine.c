@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 10:08:47 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 11:36:51 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 BOOL	death_checker(t_philo *philo, int id)
 {
-	struct timeval	current_date;
 	long			age;
-
-	gettimeofday(&current_date, NULL);
-	age = (current_date.tv_usec - philo->day_of_birth[id].tv_usec) / 1000;
-	if (age > philo->age[id] + 50)
+	
+	age = get_time() - philo->day_of_birth[id];
+	if (id == 0 && age >= philo->age[id])
 	{
-		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
-		printf("age = %ld | philo->age = %d\n", age, philo->age[id]);
-		exit(0);
+		//printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
+		printf("id = %d | age = %ld | philo->age = %d\n\n", id + 1, age, philo->age[id]);
+		//exit(0);
 	}
 }
 
@@ -67,7 +65,7 @@ void	*philo_routine(void *arg)
 
 	philo = (t_philo *) arg;
 	id = id_gen++;
-	gettimeofday(&philo->day_of_birth[id], NULL);
+	philo->day_of_birth[id] = get_time();
 	while (TRUE)
 	{
 		if (can_philo_eat(philo, id))
