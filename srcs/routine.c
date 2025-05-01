@@ -6,11 +6,26 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 09:44:07 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 10:08:47 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+BOOL	death_checker(t_philo *philo, int id)
+{
+	struct timeval	current_date;
+	long			age;
+
+	gettimeofday(&current_date, NULL);
+	age = (current_date.tv_usec - philo->day_of_birth[id].tv_usec) / 1000;
+	if (age > philo->age[id] + 50)
+	{
+		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
+		printf("age = %ld | philo->age = %d\n", age, philo->age[id]);
+		exit(0);
+	}
+}
 
 void	ft_activity(t_philo *philo, int id, int activity)
 {
@@ -23,8 +38,9 @@ void	ft_activity(t_philo *philo, int id, int activity)
 		printf("%d %d %s", philo->age[id], (id + 1), EAT_STR);
 		ft_mutex(philo, id, UNLOCK);
 		ft_mutex(philo, (id + 1), UNLOCK);
-		usleep(USLEEP_TIME * philo->arg.eat);
 		philo->age[id] += philo->arg.eat;
+		usleep(USLEEP_TIME * philo->arg.eat);
+		death_checker(philo, id);
 		ft_fork(philo, id, PUT);
 	}
 	if (activity == SLEEP)
@@ -32,18 +48,15 @@ void	ft_activity(t_philo *philo, int id, int activity)
 		printf("%d %d %s", philo->age[id], (id + 1), SLEEP_STR);
 		philo->age[id] += philo->arg.sleep;
 		usleep(USLEEP_TIME * philo->arg.sleep);
+		death_checker(philo, id);
 	}
 	else if (activity == THINK)
 	{
 		printf("%d %d %s", philo->age[id], (id + 1), THINK_STR);
 		philo->age[id] += philo->arg.think;
 		usleep(USLEEP_TIME * philo->arg.think);
+		death_checker(philo, id);
 	}
-}
-
-BOOL	death_checker(t_philo *philo, int id)
-{
-	return (FALSE);
 }
 
 void	*philo_routine(void *arg)
