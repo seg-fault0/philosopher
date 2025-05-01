@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 12:58:20 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 15:24:36 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ BOOL	t_philo_init(t_philo *philo, char ac, char **av)
 		return (FALSE);
 	ft_memset(philo->age, 0, philo->arg.philo_nbr * sizeof(int));
 	ft_memset(philo->eating_counter, 0, philo->arg.philo_nbr * sizeof(int));
+	ft_memset(philo->day, 0, philo->arg.philo_nbr * sizeof(int));
 	i = -1;
 	while (++i < philo->arg.philo_nbr)
 		philo->forks[i] = 1;
