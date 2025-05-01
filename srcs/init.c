@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 08:53:33 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 09:43:56 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ BOOL	create_forks(t_philo *philo)
 BOOL	t_philo_init(t_philo *philo, char ac, char **av)
 {
 	int	i;
+
 	if (ac < 4 || ac > 5)
 		return (err_msg(ERR_ARG_COUNT), FALSE);
 	if (get_args(philo, av) == FALSE)
@@ -63,7 +64,7 @@ BOOL	t_philo_init(t_philo *philo, char ac, char **av)
 	{
 		philo->flag[i].eat = TRUE;
 		philo->flag[i].sleep = TRUE;
-		philo->flag[i].think = TRUE;	
+		philo->flag[i].think = TRUE;
 	}
 	return (TRUE);
 }
