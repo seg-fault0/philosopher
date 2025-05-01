@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 17:47:39 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 08:53:14 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	*philo_routine(void *arg)
 			ft_activity(philo, id, EAT);
 		else if (philo->flag[id].sleep == TRUE)
 			ft_activity(philo, id, SLEEP);
-		else if (philo->flag[id].think == TRUE)
+		else if (philo->flag[id].think == TRUE && philo->arg.think > 0)
 			ft_activity(philo, id, THINK);
 	}
 	return (NULL);
