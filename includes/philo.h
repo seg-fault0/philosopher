@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/04/29 17:38:29 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 09:32:48 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 // BOOL MACROS
 # define BOOL unsigned short
@@ -83,6 +84,7 @@ typedef struct s_philo
 	pthread_mutex_t	locks[MAX_PHILO];
 	int				forks[MAX_PHILO];
 	int				age[MAX_PHILO];
+	struct timeval	day_of_birth[MAX_PHILO];
 }t_philo;
 
 // Prototypes : core

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 08:53:14 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 09:34:19 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	*philo_routine(void *arg)
 
 	philo = (t_philo *) arg;
 	id = id_gen++;
+	gettimeofday(&philo->day_of_birth[id], NULL);
 	while (TRUE)
 	{
 		if (can_philo_eat(philo, id))
