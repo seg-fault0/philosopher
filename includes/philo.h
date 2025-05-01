@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 11:48:14 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 12:07:29 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_philo
 	int				age[MAX_PHILO];
 	long			day_of_birth[MAX_PHILO];
 	int				day[MAX_PHILO];
-	unsigned int	eating_counter[MAX_PHILO];
+	int				eating_counter[MAX_PHILO];
 }t_philo;
 
 // Prototypes : core

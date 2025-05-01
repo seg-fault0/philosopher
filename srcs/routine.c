@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 11:54:13 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 12:14:15 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ BOOL	death_checker(t_philo *philo, int id)
 	long			age;
 	
 	age = get_time() - philo->day_of_birth[id];
-	if ((age - 2 > philo->age[id] && philo->eating_counter[id] < 2)
-		|| philo->day[id] > philo->arg.die)
+	if ((philo->age[id] > age && philo->eating_counter[id] < 2))
 	{
 		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
-		printf("id = %d\n", id + 1);
-		printf("age = %ld | philo->age = %d\n", age, philo->age[id]);
-		printf("day = %d\n\n", philo->day[id]);
+		printf("id = %d | age = %ld | philo->age = %d\n", id + 1, age, philo->age[id]);
+		exit(0);
+	}
+	else if (philo->day[id] > philo->arg.die)
+	{
+		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
+		printf("id = %d | day = %d\n", id + 1, philo->day[id]);
 		exit(0);
 	}
 }
@@ -48,7 +51,7 @@ void	ft_activity(t_philo *philo, int id, int activity)
 	{
 		printf("%d %d %s", philo->age[id], (id + 1), SLEEP_STR);
 		philo->age[id] += philo->arg.sleep;
-		philo->day[id] = 0;
+		philo->day[id] += philo->arg.sleep;
 		usleep(USLEEP_TIME * philo->arg.sleep);
 	}
 	else if (activity == THINK)
@@ -60,6 +63,8 @@ void	ft_activity(t_philo *philo, int id, int activity)
 	}
 	flag_manager(philo, id, activity);
 	death_checker(philo, id);
+	if (activity == SLEEP)
+		philo->day[id] = 0;
 }
 
 void	*philo_routine(void *arg)
@@ -79,8 +84,6 @@ void	*philo_routine(void *arg)
 			ft_activity(philo, id, SLEEP);
 		else if (philo->flag[id].think == TRUE && philo->arg.think > 0)
 			ft_activity(philo, id, THINK);
-		else
-			usleep(10);
 	}
 	return (NULL);
 }

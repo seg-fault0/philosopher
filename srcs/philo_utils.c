@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:53:36 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 11:29:43 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 12:01:12 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_mutex(t_philo *philo, int id, int event)
 
 BOOL	can_philo_eat(t_philo *philo, int id)
 {
-	if (philo->flag[id].eat == FALSE)
+	if (philo->flag[id].eat == FALSE || philo->arg.philo_nbr <= 1)
 		return (FALSE);
 	ft_mutex(philo, id, LOCK);
 	ft_mutex(philo, id + 1, LOCK);
