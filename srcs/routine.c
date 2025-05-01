@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 14:40:29 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/01 14:43:16 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@ BOOL	death_checker(t_philo *philo, int id)
 	if ((age > philo->age[id] + 5 && philo->eating_counter[id] < 2))
 	{
 		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
-		printf("id = %d | age = %ld | philo->age = %d\n", id + 1, age, philo->age[id]);
-		usleep(50);
 		exit(0);
 	}
 }
 
 void	ft_activity(t_philo *philo, int id, int activity)
 {
+	flag_manager(philo, id, activity);
 	if (activity == EAT)
 	{
 		printf("%d %d %s", philo->age[id], (id + 1), FORK_STR);
@@ -53,7 +52,6 @@ void	ft_activity(t_philo *philo, int id, int activity)
 		philo->age[id] += philo->arg.think;
 		usleep(USLEEP_TIME * philo->arg.think);
 	}
-	flag_manager(philo, id, activity);
 }
 
 void	*philo_routine(void *arg)
@@ -73,6 +71,8 @@ void	*philo_routine(void *arg)
 			ft_activity(philo, id, SLEEP);
 		else if (philo->flag[id].think == TRUE && philo->arg.think > 0)
 			ft_activity(philo, id, THINK);
+		else
+			usleep(5);
 		death_checker(philo, id);
 	}
 	return (NULL);
