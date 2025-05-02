@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:45:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:44:48 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:32:39 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,8 @@ void	err_msg(int msg)
 		write(2, "ERR : failed to alocate memory\n", 31);
 }
 
-void	ft_exit(t_philo *philo)
+void	ft_free(t_philo *philo)
 {
-	int	i;
-
-	i = -1;
-	while (++i < philo->arg.philo_nbr)
-		pthread_mutex_destroy(&philo->locks[i]);
 	free(philo->threads);
 	free(philo->flag);
 	free(philo->locks);
@@ -41,5 +36,15 @@ void	ft_exit(t_philo *philo)
 	free(philo->day_of_birth);
 	free(philo->eating_counter);
 	free(philo->day);
+}
+
+void	ft_exit(t_philo *philo)
+{
+	int	i;
+
+	i = -1;
+	while (++i < philo->arg.philo_nbr)
+		pthread_mutex_destroy(&philo->locks[i]);
+	ft_free(philo);
 	return ;
 }

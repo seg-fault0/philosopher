@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 10:07:53 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:32:49 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ BOOL	eating_counter_checker(t_philo *philo);
 void	ft_fork(t_philo *philo, int id, int act);
 long	get_time(void);
 void	ft_mutex(t_philo *philo, int id, int event);
+void	ft_free(t_philo *philo);
 
 //utils
 long	ft_atoi(const char *str);
