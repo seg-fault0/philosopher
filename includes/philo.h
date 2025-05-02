@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 13:39:46 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:58:51 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ BOOL	can_philo_eat(t_philo *philo, int id);
 void	flag_manager(t_philo *philo, int id, int activity);
 BOOL	death_checker(t_philo *philo, int id);
 void	ft_exit(t_philo *philo);
+void	ft_calendar(t_philo *philo, int id, int activity);
 
 //Philo utils
 BOOL	eating_counter_checker(t_philo *philo);

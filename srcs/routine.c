@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 13:45:15 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 14:04:17 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	ft_eat(t_philo *philo, int id)
 	ft_print(philo, id, EAT);
 	ft_mutex(philo, id, UNLOCK);
 	ft_mutex(philo, (id + 1), UNLOCK);
-	philo->age[id] += philo->arg.eat;
-	philo->day[id] += philo->arg.eat;
-	philo->eating_counter[id]++;
+	ft_calendar(philo, id, EAT);
 	usleep(USLEEP_TIME * philo->arg.eat);
 	ft_fork(philo, id, PUT);
 }
@@ -32,19 +30,14 @@ void	ft_activity(t_philo *philo, int id, int activity)
 	flag_manager(philo, id, activity);
 	if (activity == EAT)
 		ft_eat(philo, id);
-	if (activity == SLEEP)
+	else
 	{
-		ft_print(philo, id, SLEEP);
-		philo->age[id] += philo->arg.sleep;
-		philo->day[id] += philo->arg.sleep;
-		usleep(USLEEP_TIME * philo->arg.sleep);
-	}
-	else if (activity == THINK)
-	{
-		ft_print(philo, id, THINK);
-		philo->age[id] += philo->arg.think;
-		philo->day[id] += philo->arg.think;
-		usleep(USLEEP_TIME * philo->arg.think);
+		ft_print(philo, id, activity);
+		ft_calendar(philo, id, activity);
+		if (activity == SLEEP)
+			usleep(USLEEP_TIME * philo->arg.sleep);
+		else if (activity == THINK)
+			usleep(USLEEP_TIME * philo->arg.think);
 	}
 }
 
