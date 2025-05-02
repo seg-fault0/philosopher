@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:44:17 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 10:07:53 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 // BOOL MACROS
 # define BOOL unsigned short
 # define TRUE 1
-# define FALSE 0 
+# define FALSE 0
 
 // ERR MACROS
 # define ERR_ARG_COUNT 1
@@ -89,6 +89,7 @@ typedef struct s_philo
 	long			*day_of_birth;
 	int				*eating_counter;
 	int				*day;
+	BOOL			e_o_prog;
 }t_philo;
 
 // Prototypes : core
