@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:14:05 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:29:25 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ typedef struct s_flag
 typedef struct s_philo
 {
 	t_args			arg;
-	pthread_t		threads[MAX_PHILO];
-	t_flag			flag[MAX_PHILO];
-	pthread_mutex_t	locks[MAX_PHILO];
-	int				forks[MAX_PHILO];
-	int				age[MAX_PHILO];
-	long			day_of_birth[MAX_PHILO];
-	int				eating_counter[MAX_PHILO];
-	int				day[MAX_PHILO];
+	pthread_t		*threads;
+	t_flag			*flag;
+	pthread_mutex_t	*locks;
+	int				*forks;
+	int				*age;
+	long			*day_of_birth;
+	int				*eating_counter;
+	int				*day;
 }t_philo;
 
 // Prototypes : core

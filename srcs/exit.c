@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:45:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:15:57 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:37:56 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,17 @@ void	err_msg(int msg)
 void	ft_exit(t_philo *philo)
 {
 	int	i;
-	
+
 	i = -1;
-	while (++i < philo->arg.philo_nbr )
+	while (++i < philo->arg.philo_nbr)
 		pthread_mutex_destroy(&philo->locks[i]);
+	free(philo->threads);
+	free(philo->flag);
+	free(philo->locks);
+	free(philo->forks);
+	free(philo->age);
+	free(philo->day_of_birth);
+	free(philo->eating_counter);
+	free(philo->day);
 	return ;
 }

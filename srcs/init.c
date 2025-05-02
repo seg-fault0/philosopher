@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 08:43:50 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:42:31 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,23 @@ BOOL	create_forks(t_philo *philo)
 	return (TRUE);
 }
 
+BOOL	struct_allocator(t_philo *philo)
+{
+	philo->threads = malloc(philo->arg.philo_nbr * sizeof(pthread_t));
+	philo->flag = malloc(philo->arg.philo_nbr * sizeof(t_flag));
+	philo->locks = malloc (philo->arg.philo_nbr * sizeof(pthread_mutex_t));
+	philo->forks = malloc(philo->arg.philo_nbr * sizeof(int));
+	philo->age = ft_calloc(philo->arg.philo_nbr, sizeof(int));
+	philo->day_of_birth = malloc(philo->arg.philo_nbr * sizeof(long));
+	philo->eating_counter = ft_calloc(philo->arg.philo_nbr, sizeof(int));
+	philo->day = ft_calloc(philo->arg.philo_nbr, sizeof(int));
+	if (!philo->flag || !philo->threads || !philo->locks || !philo->forks
+		|| !philo->day || !philo->eating_counter || !philo->day_of_birth
+		|| !philo->age)
+		return (FALSE);
+	return (TRUE);
+}
+
 BOOL	t_philo_init(t_philo *philo, char ac, char **av)
 {
 	int	i;
@@ -57,11 +74,10 @@ BOOL	t_philo_init(t_philo *philo, char ac, char **av)
 		return (err_msg(ERR_ARG_COUNT), FALSE);
 	if (get_args(philo, av) == FALSE)
 		return (FALSE);
+	if (struct_allocator(philo) == FALSE)
+		return (FALSE);
 	if (create_forks(philo) == FALSE)
 		return (FALSE);
-	ft_memset(philo->age, 0, philo->arg.philo_nbr * sizeof(int));
-	ft_memset(philo->eating_counter, 0, philo->arg.philo_nbr * sizeof(int));
-	ft_memset(philo->day, 0, philo->arg.philo_nbr * sizeof(int));
 	i = -1;
 	while (++i < philo->arg.philo_nbr)
 		philo->forks[i] = 1;
