@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:53:36 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 14:45:59 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:42:14 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,6 @@ void	ft_mutex(t_philo *philo, int id, int event)
 		else
 			pthread_mutex_unlock(&philo->locks[id]);
 	}
-}
-
-BOOL	can_philo_eat(t_philo *philo, int id)
-{
-	if (philo->flag[id].eat == FALSE || philo->arg.philo_nbr <= 1)
-		return (FALSE);
-	ft_mutex(philo, id, LOCK);
-	ft_mutex(philo, id + 1, LOCK);
-	if (philo->forks[id] == 1)
-	{
-		if (id == philo->arg.philo_nbr - 1 && philo->forks[0] == 1)
-			return (TRUE);
-		else if (id != philo->arg.philo_nbr - 1 && philo->forks[id + 1] == 1)
-			return (TRUE);
-	}
-	ft_mutex(philo, id, UNLOCK);
-	ft_mutex(philo, id + 1, UNLOCK);
-	return (FALSE);
 }
 
 void	flag_manager(t_philo *philo, int id, int activity)
@@ -99,4 +81,16 @@ long	get_time(void)
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+}
+
+void	ft_print(t_philo *philo, int id, int activity)
+{
+	if (activity == EAT)
+		printf("%d %d %s", philo->age[id], (id + 1), EAT_STR);
+	else if (activity == FORK)
+		printf("%d %d %s", philo->age[id], (id + 1), FORK_STR);
+	else if (activity == SLEEP)
+		printf("%d %d %s", philo->age[id], (id + 1), SLEEP_STR);
+	else if (activity == THINK)
+		printf("%d %d %s", philo->age[id], (id + 1), THINK_STR);
 }

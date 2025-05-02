@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:14:31 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:45:15 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_eat(t_philo *philo, int id)
 {
-	printf("%d %d %s", philo->age[id], (id + 1), FORK_STR);
-	printf("%d %d %s", philo->age[id], (id + 1), FORK_STR);
+	ft_print(philo, id, FORK);
+	ft_print(philo, id, FORK);
 	ft_fork(philo, id, TAKE);
-	printf("%d %d %s", philo->age[id], (id + 1), EAT_STR);
+	ft_print(philo, id, EAT);
 	ft_mutex(philo, id, UNLOCK);
 	ft_mutex(philo, (id + 1), UNLOCK);
 	philo->age[id] += philo->arg.eat;
@@ -34,14 +34,14 @@ void	ft_activity(t_philo *philo, int id, int activity)
 		ft_eat(philo, id);
 	if (activity == SLEEP)
 	{
-		printf("%d %d %s", philo->age[id], (id + 1), SLEEP_STR);
+		ft_print(philo, id, SLEEP);
 		philo->age[id] += philo->arg.sleep;
 		philo->day[id] += philo->arg.sleep;
 		usleep(USLEEP_TIME * philo->arg.sleep);
 	}
 	else if (activity == THINK)
 	{
-		printf("%d %d %s", philo->age[id], (id + 1), THINK_STR);
+		ft_print(philo, id, THINK);
 		philo->age[id] += philo->arg.think;
 		philo->day[id] += philo->arg.think;
 		usleep(USLEEP_TIME * philo->arg.think);

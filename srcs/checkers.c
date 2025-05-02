@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 15:52:14 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 10:08:17 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:37:25 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,23 @@ BOOL	eating_counter_checker(t_philo *philo)
 		if (eat_count == philo->arg.philo_nbr)
 			return (philo->e_o_prog = TRUE, TRUE);
 	}
+	return (FALSE);
+}
+
+BOOL	can_philo_eat(t_philo *philo, int id)
+{
+	if (philo->flag[id].eat == FALSE || philo->arg.philo_nbr <= 1)
+		return (FALSE);
+	ft_mutex(philo, id, LOCK);
+	ft_mutex(philo, id + 1, LOCK);
+	if (philo->forks[id] == 1)
+	{
+		if (id == philo->arg.philo_nbr - 1 && philo->forks[0] == 1)
+			return (TRUE);
+		else if (id != philo->arg.philo_nbr - 1 && philo->forks[id + 1] == 1)
+			return (TRUE);
+	}
+	ft_mutex(philo, id, UNLOCK);
+	ft_mutex(philo, id + 1, UNLOCK);
 	return (FALSE);
 }
