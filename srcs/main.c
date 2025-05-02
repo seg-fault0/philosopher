@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:27:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:11:53 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:15:49 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	main(int ac, char **av)
 	if (t_philo_init(&philo, --ac, ++av) == FALSE)
 		return (1);
 	ft_lucher(&philo);
-	ft_exit(0);
+	ft_exit(&philo);
 	return (0);
 }

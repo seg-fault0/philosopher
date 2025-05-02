@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 08:40:07 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:14:31 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	*philo_routine(void *arg)
 			ft_activity(philo, id, THINK);
 		else
 			usleep(5);
-		death_checker(philo, id);
-		eating_counter_checker(philo);
+		if (death_checker(philo, id) || eating_counter_checker(philo))
+			break ;
 	}
 	return (NULL);
 }
