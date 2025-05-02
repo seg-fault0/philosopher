@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:53:36 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 14:03:24 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 14:05:40 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,24 +98,4 @@ void	ft_print(t_philo *philo, int id, int activity)
 		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
 	if (philo->e_o_prog == FALSE)
 		pthread_mutex_unlock(&philo->print_lock);
-}
-
-void	ft_calendar(t_philo *philo, int id, int activity)
-{
-	if (activity == EAT)
-	{
-		philo->age[id] += philo->arg.eat;
-		philo->day[id] += philo->arg.eat;
-		philo->eating_counter[id]++;
-	}
-	else if (activity == SLEEP)
-	{
-		philo->age[id] += philo->arg.sleep;
-		philo->day[id] += philo->arg.sleep;
-	}
-	else if (activity == THINK)
-	{
-		philo->age[id] += philo->arg.think;
-		philo->day[id] += philo->arg.think;
-	}
 }

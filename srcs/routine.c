@@ -6,30 +6,47 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 14:04:17 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 14:06:19 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_eat(t_philo *philo, int id)
+void	ft_calendar(t_philo *philo, int id, int activity)
 {
-	ft_print(philo, id, FORK);
-	ft_print(philo, id, FORK);
-	ft_fork(philo, id, TAKE);
-	ft_print(philo, id, EAT);
-	ft_mutex(philo, id, UNLOCK);
-	ft_mutex(philo, (id + 1), UNLOCK);
-	ft_calendar(philo, id, EAT);
-	usleep(USLEEP_TIME * philo->arg.eat);
-	ft_fork(philo, id, PUT);
+	if (activity == EAT)
+	{
+		philo->age[id] += philo->arg.eat;
+		philo->day[id] += philo->arg.eat;
+		philo->eating_counter[id]++;
+	}
+	else if (activity == SLEEP)
+	{
+		philo->age[id] += philo->arg.sleep;
+		philo->day[id] += philo->arg.sleep;
+	}
+	else if (activity == THINK)
+	{
+		philo->age[id] += philo->arg.think;
+		philo->day[id] += philo->arg.think;
+	}
 }
 
 void	ft_activity(t_philo *philo, int id, int activity)
 {
 	flag_manager(philo, id, activity);
 	if (activity == EAT)
-		ft_eat(philo, id);
+	{
+		ft_print(philo, id, FORK);
+		ft_print(philo, id, FORK);
+		ft_fork(philo, id, TAKE);
+		ft_print(philo, id, EAT);
+		ft_mutex(philo, id, UNLOCK);
+		ft_mutex(philo, (id + 1), UNLOCK);
+		ft_calendar(philo, id, EAT);
+		usleep(USLEEP_TIME * philo->arg.eat);
+		ft_fork(philo, id, PUT);
+	}
 	else
 	{
 		ft_print(philo, id, activity);
@@ -62,6 +79,8 @@ void	*philo_routine(void *arg)
 			usleep(5);
 		if (death_checker(philo, id) || eating_counter_checker(philo))
 			break ;
+		if (philo->flag[id].sleep == FALSE && philo->flag[id].think == TRUE)
+		philo->day[id] = 0;
 	}
 	return (NULL);
 }
