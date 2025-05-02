@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 08:40:54 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:11:40 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,16 @@ typedef struct s_philo
 BOOL	t_philo_init(t_philo *philo, char ac, char **av);
 void	err_msg(int msg);
 void	*philo_routine(void *arg);
-void	ft_mutex(t_philo *philo, int id, int event);
 BOOL	can_philo_eat(t_philo *philo, int id);
 void	flag_manager(t_philo *philo, int id, int activity);
+void	death_checker(t_philo *philo, int id);
+void	ft_exit(t_philo *philo);
+
+//Philo utils
+void	eating_counter_checker(t_philo *philo);
 void	ft_fork(t_philo *philo, int id, int act);
 long	get_time(void);
-void	death_checker(t_philo *philo, int id);
-void	eating_counter_checker(t_philo *philo);
+void	ft_mutex(t_philo *philo, int id, int event);
 
 //utils
 long	ft_atoi(const char *str);
