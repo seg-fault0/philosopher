@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:53:36 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 13:47:12 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:54:51 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ long	get_time(void)
 
 void	ft_print(t_philo *philo, int id, int activity)
 {
+	pthread_mutex_lock(&philo->print_lock);
 	if (activity == EAT)
 		printf("%d %d %s", philo->age[id], (id + 1), EAT_STR);
 	else if (activity == FORK)
@@ -95,4 +96,6 @@ void	ft_print(t_philo *philo, int id, int activity)
 		printf("%d %d %s", philo->age[id], (id + 1), THINK_STR);
 	else if (activity == DEAD)
 		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
+	if (philo->e_o_prog == FALSE)
+		pthread_mutex_unlock(&philo->print_lock);
 }
