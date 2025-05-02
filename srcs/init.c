@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:45:11 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:51:52 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ BOOL	get_args(t_philo *philo, char **av)
 	if (philo->arg.philo_nbr <= 0 || philo->arg.philo_nbr > MAX_PHILO)
 		return (err_msg(ERR_PHILO_RANGE), FALSE);
 	if (philo->arg.die <= 0 || philo->arg.eat <= 0 || philo->arg.sleep <= 0
-		|| philo->arg.stop < 0)
+		|| (philo->arg.stop < 0 && av[4]))
 		return (err_msg(ERR_NEGATIVE_ARG), FALSE);
 	return (TRUE);
 }

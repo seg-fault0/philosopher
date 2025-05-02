@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:06:52 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 08:48:08 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:47:24 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ long	ft_atoi(const char *str)
 	i = 0;
 	signe = 1;
 	if (!str)
-		return (0);
+		return (-1);
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i++] == '-')
