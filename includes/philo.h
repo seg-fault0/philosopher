@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:29:25 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:44:17 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define ERR_PHILO_RANGE 2
 # define ERR_NEGATIVE_ARG 3
 # define ERR_CREAT_MUTEX 4
+# define ERR_HEAP_ALLOC_F 5
 
 // PHILO MACROS
 # define MAX_PHILO 200

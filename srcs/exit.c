@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:45:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:37:56 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:44:48 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	err_msg(int msg)
 		write(2, "ERR : some args are negative\n", 29);
 	else if (msg == ERR_CREAT_MUTEX)
 		write(2, "ERR : failed to create a mutex\n", 31);
+	else if (msg == ERR_HEAP_ALLOC_F)
+		write(2, "ERR : failed to alocate memory\n", 31);
 }
 
 void	ft_exit(t_philo *philo)

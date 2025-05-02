@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:42:31 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 09:45:11 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ BOOL	struct_allocator(t_philo *philo)
 	if (!philo->flag || !philo->threads || !philo->locks || !philo->forks
 		|| !philo->day || !philo->eating_counter || !philo->day_of_birth
 		|| !philo->age)
-		return (FALSE);
+		return (err_msg(ERR_HEAP_ALLOC_F), FALSE);
 	return (TRUE);
 }
 
