@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:53:36 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 13:42:14 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:47:12 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,6 @@ void	ft_print(t_philo *philo, int id, int activity)
 		printf("%d %d %s", philo->age[id], (id + 1), SLEEP_STR);
 	else if (activity == THINK)
 		printf("%d %d %s", philo->age[id], (id + 1), THINK_STR);
+	else if (activity == DEAD)
+		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
 }
