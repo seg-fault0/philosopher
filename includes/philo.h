@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 13:58:51 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 14:12:25 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_calendar(t_philo *philo, int id, int activity);
 BOOL	eating_counter_checker(t_philo *philo);
 void	ft_fork(t_philo *philo, int id, int act);
 long	get_time(void);
-void	ft_mutex(t_philo *philo, int id, int event);
+void	fork_mutex(t_philo *philo, int id, int event);
 void	ft_free(t_philo *philo);
 void	ft_print(t_philo *philo, int id, int activity);
 

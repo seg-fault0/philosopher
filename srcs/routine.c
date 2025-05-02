@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 14:09:07 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 14:12:53 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	ft_activity(t_philo *philo, int id, int activity)
 		ft_print(philo, id, FORK);
 		ft_fork(philo, id, TAKE);
 		ft_print(philo, id, EAT);
-		ft_mutex(philo, id, UNLOCK);
-		ft_mutex(philo, (id + 1), UNLOCK);
+		fork_mutex(philo, id, UNLOCK);
+		fork_mutex(philo, (id + 1), UNLOCK);
 		ft_calendar(philo, id, EAT);
 		usleep(USLEEP_TIME * philo->arg.eat);
 		ft_fork(philo, id, PUT);

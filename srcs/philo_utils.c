@@ -6,13 +6,13 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:53:36 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 14:05:40 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 14:12:46 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_mutex(t_philo *philo, int id, int event)
+void	fork_mutex(t_philo *philo, int id, int event)
 {
 	if (event == LOCK)
 	{
@@ -63,15 +63,15 @@ void	ft_fork(t_philo *philo, int id, int act)
 	}
 	else if (act == PUT)
 	{
-		ft_mutex(philo, id, LOCK);
-		ft_mutex(philo, id + 1, LOCK);
+		fork_mutex(philo, id, LOCK);
+		fork_mutex(philo, id + 1, LOCK);
 		philo->forks[id] = 1;
 		if (id == philo->arg.philo_nbr - 1)
 			philo->forks[0] = 1;
 		else
 			philo->forks[id + 1] = 1;
-		ft_mutex(philo, id, UNLOCK);
-		ft_mutex(philo, id + 1, UNLOCK);
+		fork_mutex(philo, id, UNLOCK);
+		fork_mutex(philo, id + 1, UNLOCK);
 	}
 }
 
