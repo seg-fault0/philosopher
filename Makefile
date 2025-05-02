@@ -3,6 +3,7 @@ SRC =	srcs/exit.c			\
 		srcs/libft.c		\
 		srcs/main.c			\
 		srcs/philo_utils.c	\
+		srcs/philo_utils2.c	\
 		srcs/routine.c		\
 
 OBG = $(SRC:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/01 15:27:51 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 08:40:07 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,6 @@ void	ft_activity(t_philo *philo, int id, int activity)
 	}
 }
 
-BOOL	death_checker(t_philo *philo, int id)
-{
-	long			age;
-
-	age = get_time() - philo->day_of_birth[id];
-	if ((age > philo->age[id] + 5 && philo->eating_counter[id] < 2)
-		|| philo->day[id] > philo->arg.die)
-	{
-		printf("%d %d %s", philo->age[id], (id + 1), DEAD_STR);
-		exit(0);
-	}
-	if (philo->flag[id].sleep == FALSE && philo->flag[id].think == TRUE)
-		philo->day[id] = 0;
-}
-
 void	*philo_routine(void *arg)
 {
 	t_philo		*philo;
@@ -83,6 +68,7 @@ void	*philo_routine(void *arg)
 		else
 			usleep(5);
 		death_checker(philo, id);
+		eating_counter_checker(philo);
 	}
 	return (NULL);
 }
