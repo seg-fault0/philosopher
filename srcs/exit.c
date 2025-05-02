@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:45:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 13:32:39 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:35:57 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_exit(t_philo *philo)
 	int	i;
 
 	i = -1;
+	pthread_mutex_destroy(&philo->print_lock);
 	while (++i < philo->arg.philo_nbr)
 		pthread_mutex_destroy(&philo->locks[i]);
 	ft_free(philo);

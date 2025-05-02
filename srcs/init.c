@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 13:33:00 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:35:26 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ BOOL	create_forks(t_philo *philo)
 	int	i;
 
 	i = -1;
+	if (pthread_mutex_init(&philo->print_lock, NULL) != 0)
+		return (FALSE);
 	while (++i < philo->arg.philo_nbr)
 	{
 		if (pthread_mutex_init(&philo->locks[i], NULL) != 0)

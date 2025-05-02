@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:28:15 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 13:32:49 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/02 13:34:40 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_philo
 	pthread_t		*threads;
 	t_flag			*flag;
 	pthread_mutex_t	*locks;
+	pthread_mutex_t	print_lock;
 	int				*forks;
 	int				*age;
 	long			*day_of_birth;
