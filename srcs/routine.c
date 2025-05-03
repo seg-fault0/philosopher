@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/03 10:56:40 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/03 11:01:18 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,21 @@ void	ft_activity(t_philo *philo, int id, int activity)
 	}
 }
 
+void	create_philo(t_philo *philo, int *id)
+{
+	static int	id_gen;
+
+	*id = id_gen++;
+	philo->day_of_birth[*id] = get_time();
+}
+
 void	*philo_routine(void *arg)
 {
 	t_philo		*philo;
-	static int	id_gen;
 	int			id;
 
 	philo = (t_philo *) arg;
-	id = id_gen++;
-	philo->day_of_birth[id] = get_time();
+	create_philo(philo, &id);
 	while (TRUE)
 	{
 		if (can_philo_eat(philo, id))
