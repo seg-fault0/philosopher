@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 14:12:53 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/03 10:56:40 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void	ft_calendar(t_philo *philo, int id, int activity)
 
 void	ft_activity(t_philo *philo, int id, int activity)
 {
+	int	next_id;
+
+	next_id = (id + 1) % philo->arg.philo_nbr;
 	flag_manager(philo, id, activity);
 	if (activity == EAT)
 	{
@@ -44,7 +47,7 @@ void	ft_activity(t_philo *philo, int id, int activity)
 		ft_fork(philo, id, TAKE);
 		ft_print(philo, id, EAT);
 		fork_mutex(philo, id, UNLOCK);
-		fork_mutex(philo, (id + 1), UNLOCK);
+		fork_mutex(philo, next_id, UNLOCK);
 		ft_calendar(philo, id, EAT);
 		usleep(USLEEP_TIME * philo->arg.eat);
 		ft_fork(philo, id, PUT);

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:53:36 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 17:59:57 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/03 10:58:25 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,9 @@
 void	fork_mutex(t_philo *philo, int id, int event)
 {
 	if (event == LOCK)
-	{
-		if (id == philo->arg.philo_nbr)
-			pthread_mutex_lock(&philo->locks[0]);
-		else
-			pthread_mutex_lock(&philo->locks[id]);
-	}
+		pthread_mutex_lock(&philo->locks[id]);
 	else if (event == UNLOCK)
-	{
-		if (id == philo->arg.philo_nbr)
-			pthread_mutex_unlock(&philo->locks[0]);
-		else
-			pthread_mutex_unlock(&philo->locks[id]);
-	}
+		pthread_mutex_unlock(&philo->locks[id]);
 }
 
 void	flag_manager(t_philo *philo, int id, int activity)
@@ -53,25 +43,22 @@ void	flag_manager(t_philo *philo, int id, int activity)
 
 void	ft_fork(t_philo *philo, int id, int act)
 {
+	int	next_id;
+
+	next_id = (id + 1) % philo->arg.philo_nbr;
 	if (act == TAKE)
 	{
 		philo->forks[id] = 0;
-		if (id == philo->arg.philo_nbr - 1)
-			philo->forks[0] = 0;
-		else
-			philo->forks[id + 1] = 0;
+		philo->forks[next_id] = 0;
 	}
 	else if (act == PUT)
 	{
 		fork_mutex(philo, id, LOCK);
-		fork_mutex(philo, id + 1, LOCK);
+		fork_mutex(philo, next_id, LOCK);
 		philo->forks[id] = 1;
-		if (id == philo->arg.philo_nbr - 1)
-			philo->forks[0] = 1;
-		else
-			philo->forks[id + 1] = 1;
+		philo->forks[next_id] = 1;
 		fork_mutex(philo, id, UNLOCK);
-		fork_mutex(philo, id + 1, UNLOCK);
+		fork_mutex(philo, next_id, UNLOCK);
 	}
 }
 
