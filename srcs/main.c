@@ -6,13 +6,13 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:27:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 09:15:49 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/03 09:24:00 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_lucher(t_philo *philo)
+void	ft_luncher(t_philo *philo)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 
 	if (t_philo_init(&philo, --ac, ++av) == FALSE)
 		return (1);
-	ft_lucher(&philo);
+	ft_luncher(&philo);
 	ft_exit(&philo);
 	return (0);
 }
