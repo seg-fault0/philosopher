@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 15:52:14 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/03 10:53:41 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/04 10:04:33 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ BOOL	death_checker(t_philo *philo, int id)
 {
 	long			age;
 
-	age = get_time() - philo->day_of_birth[id];
+	age = get_time() - (philo->day_of_birth[id] + philo->arg.philo_nbr);
 	if (philo->e_o_prog == TRUE)
 		return (TRUE);
-	if ((age > philo->age[id] + 5 && philo->eating_counter[id] < 2)
+	if ((age > philo->age[id] && philo->eating_counter[id] < 2)
 		|| philo->day[id] > philo->arg.die)
 		return (ft_print(philo, id, DEAD), philo->e_o_prog = TRUE, TRUE);
 	return (FALSE);
