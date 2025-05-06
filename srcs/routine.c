@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:53:55 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/03 11:01:18 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/06 09:26:54 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	ft_calendar(t_philo *philo, int id, int activity)
 		philo->age[id] += philo->arg.think;
 		philo->day[id] += philo->arg.think;
 	}
-	if (philo->flag[id].sleep == FALSE && philo->flag[id].think == TRUE)
-		philo->day[id] = 0;
 }
 
 void	ft_activity(t_philo *philo, int id, int activity)
