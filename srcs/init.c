@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/02 13:35:26 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/06 12:17:42 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ BOOL	t_philo_init(t_philo *philo, char ac, char **av)
 	if (get_args(philo, av) == FALSE)
 		return (FALSE);
 	if (struct_allocator(philo) == FALSE)
-		return (FALSE);
+		return (ft_free(philo), FALSE);
 	if (create_forks(philo) == FALSE)
 		return (ft_free(philo), FALSE);
 	philo->e_o_prog = FALSE;
