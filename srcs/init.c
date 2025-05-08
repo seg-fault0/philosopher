@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:37:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/05/06 12:17:42 by wimam            ###   ########.fr       */
+/*   Updated: 2025/05/08 09:54:06 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ BOOL	get_args(t_philo *philo, char **av)
 	philo->arg.think = philo->arg.die - (philo->arg.eat + philo->arg.sleep);
 	if (philo->arg.think < 0)
 		philo->arg.think = 0;
+	else if (philo->arg.think > 200)
+		philo->arg.think = 200;
 	if (philo->arg.stop == 0)
 		return (FALSE);
 	if (philo->arg.philo_nbr <= 0 || philo->arg.philo_nbr > MAX_PHILO)
